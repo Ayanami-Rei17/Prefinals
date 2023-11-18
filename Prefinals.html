@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime, Odd and Even Numbers</title>
+    <body>
+   <form name="form">
+   	Input: <input type="number" id="no"><br><br>
+   	<input type="submit" onclick="analyzeNumber()">
+   </form>
+</body>
+    <script>
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function analyzeNumber() {
+            const userInput = parseInt(document.form.no.value);
+
+            if (isNaN(userInput)) {
+                alert("Invalid input. Please enter a valid number.");
+                return;
+            }
+
+            const isPrimeResult = isPrime(userInput);
+            const oddNumbers = [];
+            const evenNumbers = [];
+
+            for (let i = 1; i <= userInput; i++) {
+                if (i % 2 === 0) {
+                    evenNumbers.push(i);
+                } else {
+                    oddNumbers.push(i);
+                }
+            }
+
+            document.write( userInput + " is " + (isPrimeResult ? "prime" : "not prime") + " number.<br>")
+			document.write("Odd numbers: " + oddNumbers.join(", ") + "<br>" + "Even numbers: " + evenNumbers.join(", "))
+            
+        }
+    </script>
+</head> 
+
+</html>
